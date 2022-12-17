@@ -1,28 +1,72 @@
 import React from "react";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useRef } from "react";
 
 const Home = () => {
-  const [students, setStudents] = useState([]);
+  // const [students, setStudents] = useState([]);
   const [datetime, setDatetime] = useState("");
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+  const [deadlineDisplay, setdeadlineDisplay] = useState("");
 
-  const getDateTime = (e) => {
-    const current = new Date();
-    const date = `${current.getDate()}/${current.getMonth() +
-      1}/${current.getFullYear()} ${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}`;
+  const deadline = new Date("12/17/2022 16:42");
 
-    return setDatetime(date);
-  };
+  //Conversions
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
 
-  const fetchData = async () => {
-    const response = await fetch(
-      "https://v1.nocodeapi.com/olacodes/netlify/HxdooGSgqPbqdwqO/listFormSubmissions?form_id=639d06170fb0d600089610a8"
-    );
-    setStudents(await response.json());
+  const getTime = () => {
+    const time = deadline - new Date();
+    console.log(minutes);
+    setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
+    setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
+    setMinutes(Math.floor((time / 1000 / 60) % 60));
+    setSeconds(Math.floor((time / 1000) % 60));
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    const interval = setInterval(() => getTime(deadline), 1000);
+
+    if (minutes > 0) {
+      setdeadlineDisplay("Submit Now! to get your full score");
+    } else if (minutes < 0 && minutes > -15 && seconds < 0 && hours == -1) {
+      setdeadlineDisplay("Late Submission 15 marks would be deducted");
+    } else if (minutes <= -15 && minutes > -30 && seconds < 0 && hours == -1) {
+      setdeadlineDisplay("Last Submission 30 marks would be deducted");
+    }
+    if (minutes <= -30 && minutes > -45 && seconds < 0 && hours == -1) {
+      setdeadlineDisplay("Late Submission 45 marks would be deducted");
+    } else if (minutes <= -45 && minutes > -60 && seconds < 0 && hours == -1) {
+      setdeadlineDisplay("Late Submission 60 marks would be deducted");
+    } else if (hours <= -2) {
+      setdeadlineDisplay(
+        "Deadline has been exceeded! You cant submit any longer"
+      );
+    }
+
+    return () => clearInterval(interval);
+  }, [minutes, seconds]);
+
+  const getDateTime = () => {
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth() +
+      1}/${current.getFullYear()} ${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}`;
+    return setDatetime(date);
+  };
+
+  // const fetchData = async () => {
+  //   const response = await fetch(
+  //     "https://v1.nocodeapi.com/olacodes/netlify/HxdooGSgqPbqdwqO/listFormSubmissions?form_id=639d06170fb0d600089610a8"
+  //   );
+  //   setStudents(await response.json());
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   return (
     <div className="h-screen md:flex">
@@ -39,7 +83,9 @@ const Home = () => {
             Hello Again!
             {/* <Suspense fallback="null">{date}</Suspense> */}
           </h1>
-          <p className="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
+          <p className="text-sm font-normal text-gray-600 mb-7">
+            {days} Days : {hours} Hours : {minutes} Minutes : {seconds} Seconds
+          </p>
           <input type="hidden" name="datetime" value={datetime} />
           <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
             <svg
@@ -135,12 +181,8 @@ const Home = () => {
           </span> */}
         </form>
       </div>
-      <div className="relative overflow-hidden  w-full h-full bg-gradient-to-tr from-blue-800 to-purple-700 i ">
+      {/* <div className="relative overflow-hidden  w-full h-full bg-gradient-to-tr from-blue-800 to-purple-700 i ">
         <div>
-          {/* <h1 className="text-white font-bold text-4xl font-sans">GoFinance</h1>
-          <p className="text-white mt-1">
-            The most popular peer to peer lending at SEA
-          </p> */}
           <div className="h-screen flex justify-center items-center px-10">
             <table className="w-full  text-center">
               <thead className="border-b bg-gray-800">
@@ -211,18 +253,13 @@ const Home = () => {
               </tbody>
             </table>
           </div>
-          {/* <button
-            type="submit"
-            className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
-          >
-            Read More
-          </button> */}
+
         </div>
         <div className="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
         <div className="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
         <div className="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
         <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-      </div>
+      </div> */}
     </div>
   );
 };
