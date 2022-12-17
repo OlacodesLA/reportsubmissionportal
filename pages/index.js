@@ -3,10 +3,16 @@ import { useState, useEffect, Suspense } from "react";
 
 const Home = () => {
   const [students, setStudents] = useState([]);
+  const [datetime, setDatetime] = useState("");
 
-  const current = new Date();
-  const date = `${current.getDate()}/${current.getMonth() +
-    1}/${current.getFullYear()} ${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}`;
+  const getDateTime = (e) => {
+    e.preventDefault();
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth() +
+      1}/${current.getFullYear()} ${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}`;
+
+    return setDatetime(date);
+  };
 
   const fetchData = async () => {
     const response = await fetch(
@@ -28,14 +34,15 @@ const Home = () => {
           method="POST"
           data-netlify="true"
           className="bg-white"
+          onSubmit={getDateTime}
         >
           <input type="hidden" name="form-name" value="report" />
           <h1 className="text-gray-800 font-bold text-2xl mb-1">
             Hello Again!
-            <Suspense fallback="null">{date}</Suspense>
+            {/* <Suspense fallback="null">{date}</Suspense> */}
           </h1>
           <p className="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
-          <input type="hidden" name="date/time" value={date} />
+          <input type="hidden" name="datetime" value={datetime} />
           <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -194,7 +201,7 @@ const Home = () => {
                         {student.data.Section}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        Nill
+                        {student.data.datetime}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         Nill
