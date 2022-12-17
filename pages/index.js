@@ -6,7 +6,6 @@ const Home = () => {
   const [datetime, setDatetime] = useState("");
 
   const getDateTime = (e) => {
-    e.preventDefault();
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth() +
       1}/${current.getFullYear()} ${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}`;
@@ -34,7 +33,6 @@ const Home = () => {
           method="POST"
           data-netlify="true"
           className="bg-white"
-          onSubmit={getDateTime}
         >
           <input type="hidden" name="form-name" value="report" />
           <h1 className="text-gray-800 font-bold text-2xl mb-1">
@@ -128,6 +126,7 @@ const Home = () => {
           <button
             type="submit"
             className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
+            onClick={getDateTime}
           >
             Submit
           </button>
