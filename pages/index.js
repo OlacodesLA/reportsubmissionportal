@@ -6,7 +6,7 @@ import Pagination from "../components/Pagination";
 
 const Home = () => {
   const [students, setStudents] = useState([]);
-  const [remark, setRemark] = useState([]);
+  const [remark, setRemark] = useState("");
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [studentsPerPage, setStudentsPerPage] = useState(5);
