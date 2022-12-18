@@ -49,7 +49,7 @@ const Table = ({ students }) => {
                 {student.data.datetime}
               </td>
               <td className=" text-gray-900  px-0 sm:px-3 md:px-6 py-4 whitespace-nowrap">
-                Nill
+                {student.data.remark}
               </td>
             </tr>
           );
