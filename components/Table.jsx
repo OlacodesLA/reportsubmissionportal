@@ -48,8 +48,10 @@ const Table = ({ students }) => {
               <td className=" text-gray-900  px-0 sm:px-3 md:px-6 py-4 whitespace-nowrap">
                 {student.data.datetime}
               </td>
-              <td className=" text-gray-900  px-0 sm:px-3 md:px-6 py-4 whitespace-nowrap">
-                {student.data.remark}
+              <td className=" text-white font-semibold  px-0 sm:px-3 md:px-6 py-4 whitespace-nowrap">
+                <span className="bg-gradient-to-r from-[#4900EE] to-indigo-600 py-1 px-2 rounded-lg">
+                  {student.data.remark}
+                </span>
               </td>
             </tr>
           );

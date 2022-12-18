@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .pulse {
+    height: 30px;
+    width: 30px;
+    margin-left: 25px;
+    background-color: #8bc53f;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+  .pulse:before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 30px);
+    height: calc(100% + 30px);
+    border-radius: 50%;
+    border: 1px solid #8bc53f;
+    animation: animate 1.5s linear infinite;
+  }
+  .pulse:after {
+    content: "";
+    position: absolute;
+
+    width: calc(100% + 30px);
+    height: calc(100% + 30px);
+    border-radius: 50%;
+    border: 2px solid #8bc53f;
+    animation: animate 1.5s linear infinite;
+    animation-delay: 0.4s;
+  }
+  /* Phone */
+
+  @keyframes animate {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+}

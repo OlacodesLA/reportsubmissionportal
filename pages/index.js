@@ -28,6 +28,7 @@ const Home = () => {
   const getTime = () => {
     const time = deadline - new Date();
     console.log(minutes);
+
     setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
     setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
     setMinutes(Math.floor((time / 1000 / 60) % 60));
@@ -56,6 +57,10 @@ const Home = () => {
     } else if (hours <= -2) {
       setdeadlineDisplay(
         "Deadline has been exceeded! You cant submit any longer"
+      );
+    } else if (days <= -1) {
+      setdeadlineDisplay(
+        "Deadline has been exceeded! You can't submit any longer"
       );
     }
 
