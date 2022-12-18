@@ -17,7 +17,7 @@ const Home = () => {
   const [seconds, setSeconds] = useState(0);
   const [deadlineDisplay, setdeadlineDisplay] = useState("");
 
-  const deadline = new Date("12/17/2022 16:42");
+  const deadline = new Date("12/18/2022 22:10");
 
   //Conversions
   const second = 1000;
