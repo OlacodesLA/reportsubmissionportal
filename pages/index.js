@@ -27,7 +27,7 @@ const Home = () => {
   const [seconds, setSeconds] = useState(0);
   const [deadlineDisplay, setdeadlineDisplay] = useState("");
 
-  const deadline = new Date("12/19/2022 16:20");
+  const deadline = new Date("12/21/2022 12:00");
 
   //Conversions
   const second = 1000;
@@ -47,7 +47,6 @@ const Home = () => {
     const interval = setInterval(() => getTime(deadline), 1000);
 
     if (minutes > 0) {
-      setdeadlineDisplay("Submit Now! to get your full score");
       setRemoveTimer(false);
       setRemark("Full");
       setsubmit(true);
@@ -294,7 +293,6 @@ const Home = () => {
             method="POST"
             data-netlify="true"
             className="bg-white md:pt-40 pt-56"
-            onSubmit={submit ? () => true : () => false}
           >
             <input type="hidden" name="form-name" value="report" />
             <ThankContext.Provider value={{ deadlineDisplay }}>
@@ -419,20 +417,21 @@ const Home = () => {
               type="submit"
               className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
               onClick={getDateTime}
+              disabled={submit ? false : true}
             >
               Submit
             </button>
           </form>
         </div>
       </div>
-      <div className="relative overflow-hidden  w-full h-full bg-gradient-to-tr from-blue-800 to-purple-700 i ">
+      <div className="relative overflow-hidden h-90  w-full md:h-full bg-gradient-to-tr from-blue-800 to-purple-700 i ">
         <div className="">
-          <div className="h-screen flex flex-col justify-center items-center px-10 rounded-lg">
-            <div className="w-full flex justify-between">
-              <h1 className="w-full pb-20 text-lg font-bold flex items-center justify-start text-start text-white">
+          <div className="h-screen flex flex-col md:justify-center pt-20 md:pt-0 justify-start items-center px-10 rounded-lg">
+            <div className="w-full flex md:flex-row flex-col justify-between">
+              <h1 className="w-full md:pb-20 text-lg  font-bold flex items-center md:justify-start md:text-start text-white drop-shadow-lg">
                 List of students who has submitted
               </h1>
-              <h1 className="w-full pb-20 text-lg font-bold flex items-center justify-end text-end text-white">
+              <h1 className="w-full pb-20 text-base md:text-lg font-bold flex items-center md:justify-end md:text-end text-white drop-shadow-lg">
                 Number of student who has submitted : {students.length}
               </h1>
             </div>
@@ -448,10 +447,10 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-        <div className="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-        <div className="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-        <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div className="absolute -bottom-32 text-gray border-gray-300 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div className="absolute -bottom-40 -left-20 border-gray-300 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div className="absolute -top-40 text-gray-300 border-gray-300 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div className="absolute -top-20 -right-20 w-80 border-gray-300 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
       </div>
       {/* <div className="absolute flex justify-center w-screen">
         <div className=" bg-white mx-10 px-6 py-2  mt-5 rounded-lg ">

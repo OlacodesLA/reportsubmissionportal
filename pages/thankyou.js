@@ -5,8 +5,8 @@ import { ThankContext } from "../components/Context";
 
 const thankyou = () => {
   return (
-    <div className="w-full h-full bg-gradient-to-tr from-blue-800 to-purple-700  ">
-      <div className="flex justify-center items-center  overflow-hidden">
+    <div className="w-screen h-screen bg-gradient-to-tr from-blue-800 to-purple-700 overflow-hidden ">
+      <div className="relative flex justify-center items-center  overflow-hidden">
         <div className="min-h-screen  flex justify-center items-center">
           <div className="p-8 flex-1">
             <div className="w-80 bg-white rounded-3xl mx-auto overflow-hidden shadow-xl">
