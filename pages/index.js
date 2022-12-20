@@ -175,13 +175,13 @@ const Home = () => {
   //Exports to CSV file
 
   const ExporttoCSV = () => {
-    const fileName = "downloader";
+    const fileName = "reportsubmitions";
     const exportType = "csv";
 
     exportFromJSON({ data, fileName, exportType });
   };
   const ExporttoXLS = () => {
-    const fileName = "downloader";
+    const fileName = "reportsubmissions";
     const exportType = "xls";
 
     exportFromJSON({ data, fileName, exportType });
