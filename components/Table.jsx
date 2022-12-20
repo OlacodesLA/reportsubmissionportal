@@ -1,7 +1,11 @@
 import React from "react";
 import Pagination from "./Pagination";
+import { useContext } from "react";
+import { LoginContext } from "./Context";
 
-const Table = ({ students }) => {
+const Table = () => {
+  const { students, loading } = useContext(LoginContext);
+
   return (
     <table className="w-full text-center z-50 rounded-2xl overflow-scroll">
       <thead className="border-b  bg-gray-900 rounded-2xl font-bold text-[10px] sm:text-sm">
