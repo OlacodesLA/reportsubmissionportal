@@ -57,7 +57,7 @@ const Home = () => {
       hours == -1 &&
       days == -1
     ) {
-      setdeadlineDisplay("Late Submission 15 marks would be deducted");
+      setdeadlineDisplay("Late Submission 5 marks would be deducted");
       setRemoveTimer(false);
       setRemark("-5");
       setsubmit(true);
@@ -68,7 +68,7 @@ const Home = () => {
       hours == -1 &&
       days == -1
     ) {
-      setdeadlineDisplay("Late Submission 30 marks would be deducted");
+      setdeadlineDisplay("Late Submission 10 marks would be deducted");
       setRemoveTimer(false);
       setRemark("-10");
       setsubmit(true);
@@ -80,7 +80,7 @@ const Home = () => {
       hours == -1 &&
       days == -1
     ) {
-      setdeadlineDisplay("Late Submission 45 marks would be deducted");
+      setdeadlineDisplay("Late Submission 15 marks would be deducted");
       setRemoveTimer(false);
       setRemark("-15");
       setsubmit(true);
@@ -91,7 +91,7 @@ const Home = () => {
       hours == -1 &&
       days == -1
     ) {
-      setdeadlineDisplay("Late Submission 60 marks would be deducted");
+      setdeadlineDisplay("Late Submission 20 marks would be deducted");
       setRemoveTimer(false);
       setRemark("-20");
       setsubmit(true);
