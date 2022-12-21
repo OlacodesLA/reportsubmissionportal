@@ -27,7 +27,7 @@ const Home = () => {
   const [seconds, setSeconds] = useState(0);
   const [deadlineDisplay, setdeadlineDisplay] = useState("");
 
-  const deadline = new Date("12/21/2022 12:00");
+  const deadline = new Date("12/22/2022 12:00");
 
   //Conversions
   const second = 1000;
@@ -57,9 +57,9 @@ const Home = () => {
       hours == -1 &&
       days == -1
     ) {
-      setdeadlineDisplay("Late Submission 15 marks would be deducted");
+      setdeadlineDisplay("Late Submission 5 marks would be deducted");
       setRemoveTimer(false);
-      setRemark("-15");
+      setRemark("-5");
       setsubmit(true);
     } else if (
       minutes <= -15 &&
@@ -68,9 +68,9 @@ const Home = () => {
       hours == -1 &&
       days == -1
     ) {
-      setdeadlineDisplay("Last Submission 30 marks would be deducted");
+      setdeadlineDisplay("Last Submission 10 marks would be deducted");
       setRemoveTimer(false);
-      setRemark("-30");
+      setRemark("-10");
       setsubmit(true);
     }
     if (
@@ -80,9 +80,9 @@ const Home = () => {
       hours == -1 &&
       days == -1
     ) {
-      setdeadlineDisplay("Late Submission 45 marks would be deducted");
+      setdeadlineDisplay("Late Submission 15 marks would be deducted");
       setRemoveTimer(false);
-      setRemark("-45");
+      setRemark("-15");
       setsubmit(true);
     } else if (
       minutes <= -45 &&
@@ -91,9 +91,9 @@ const Home = () => {
       hours == -1 &&
       days == -1
     ) {
-      setdeadlineDisplay("Late Submission 60 marks would be deducted");
+      setdeadlineDisplay("Late Submission 20 marks would be deducted");
       setRemoveTimer(false);
-      setRemark("-60");
+      setRemark("-20");
       setsubmit(true);
     } else if (hours <= -2) {
       setdeadlineDisplay(
@@ -285,7 +285,6 @@ const Home = () => {
               ) : null}
             </div>
           </div>
-
           <form
             name="report"
             action="/thankyou"
@@ -298,7 +297,6 @@ const Home = () => {
             <ThankContext.Provider value={{ deadlineDisplay }}>
               <Deadline />
             </ThankContext.Provider>
-
             {removeTimer ? null : (
               <div className="w-full py-3 flex justify-center">
                 <span className="flex gap-6">
