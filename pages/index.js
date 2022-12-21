@@ -68,11 +68,7 @@ const Home = () => {
       hours == -1 &&
       days == -1
     ) {
-<<<<<<< HEAD
       setdeadlineDisplay("Last Submission 10 marks would be deducted");
-=======
-      setdeadlineDisplay("Late Submission 10 marks would be deducted");
->>>>>>> 4b6f0ca316b555660c3c4cd080e8362df0a37882
       setRemoveTimer(false);
       setRemark("-10");
       setsubmit(true);
