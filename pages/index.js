@@ -287,7 +287,8 @@ const Home = () => {
           </div>
           <form
             name="report"
-            enctype="multipart/form-data"
+            action="/thankyou"
+            encType="multipart/form-data"
             method="POST"
             data-netlify="true"
             className="bg-white md:pt-40 pt-56"
@@ -414,6 +415,7 @@ const Home = () => {
               type="submit"
               className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
               onClick={getDateTime}
+              disabled={submit ? false : true}
             >
               Submit
             </button>
