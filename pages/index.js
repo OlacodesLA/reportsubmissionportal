@@ -59,7 +59,7 @@ const Home = () => {
     ) {
       setdeadlineDisplay("Late Submission 15 marks would be deducted");
       setRemoveTimer(false);
-      setRemark("-15");
+      setRemark("-5");
       setsubmit(true);
     } else if (
       minutes <= -15 &&
@@ -70,7 +70,7 @@ const Home = () => {
     ) {
       setdeadlineDisplay("Last Submission 30 marks would be deducted");
       setRemoveTimer(false);
-      setRemark("-30");
+      setRemark("-10");
       setsubmit(true);
     }
     if (
@@ -82,7 +82,7 @@ const Home = () => {
     ) {
       setdeadlineDisplay("Late Submission 45 marks would be deducted");
       setRemoveTimer(false);
-      setRemark("-45");
+      setRemark("-15");
       setsubmit(true);
     } else if (
       minutes <= -45 &&
@@ -93,7 +93,7 @@ const Home = () => {
     ) {
       setdeadlineDisplay("Late Submission 60 marks would be deducted");
       setRemoveTimer(false);
-      setRemark("-60");
+      setRemark("-20");
       setsubmit(true);
     } else if (hours <= -2) {
       setdeadlineDisplay(
