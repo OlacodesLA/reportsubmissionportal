@@ -287,7 +287,6 @@ const Home = () => {
           </div>
           <form
             name="report"
-            action="/thankyou"
             enctype="multipart/form-data"
             method="POST"
             data-netlify="true"
