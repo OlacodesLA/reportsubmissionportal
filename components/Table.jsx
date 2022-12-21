@@ -8,7 +8,7 @@ const Table = () => {
 
   return (
     <table className="w-full text-center z-50 rounded-2xl overflow-scroll">
-      <thead className="border-b  bg-gray-900 rounded-2xl font-bold text-[10px] sm:text-sm">
+      <thead className="border-b bg-gray-900 rounded-2xl font-bold text-[10px] sm:text-sm">
         <tr>
           <th scope="col" className=" text-white px-1 sm:px-3 md:px-6 py-4 ">
             S/N
