@@ -285,141 +285,145 @@ const Home = () => {
               ) : null}
             </div>
           </div>
-          <form
-            name="report"
-            action="/thankyou"
-            encType="multipart/form-data"
-            method="POST"
-            data-netlify="true"
-            className="bg-white md:pt-40 pt-56"
-          >
-            <input type="hidden" name="form-name" value="report" />
+          <div className="bg-white md:pt-40 pt-56">
             <ThankContext.Provider value={{ deadlineDisplay }}>
               <Deadline />
             </ThankContext.Provider>
-            {removeTimer ? null : (
-              <div className="w-full py-3 flex justify-center">
-                <span className="flex gap-6">
-                  <span className="flex justify-center items-center flex-col w-10 h-10 bg-gradient-to-r from-[#4900EE] to-indigo-600 rounded-lg">
-                    <p id="days" className="text-base text-white">
-                      {days}
-                    </p>
-                    <p className="text-[10px] text-white">Days</p>
-                  </span>
-                  <span className="flex justify-center items-center flex-col w-10 h-10 bg-gradient-to-r from-[#4900EE] to-indigo-600 rounded-lg">
-                    <p id="hours" className="text-base text-white">
-                      {hours}
-                    </p>
-                    <p className="text-[10px] text-white">Hours</p>
-                  </span>
-                  <span className="flex justify-center items-center flex-col w-10 h-10 bg-gradient-to-r from-[#4900EE] to-indigo-600 rounded-lg">
-                    <p id="minutes" className="text-base text-white">
-                      {minutes}
-                    </p>
-                    <p className="text-[10px] text-white">Minutes</p>
-                  </span>
-                  <span className="flex justify-center items-center flex-col w-10 h-10 bg-gradient-to-r from-[#4900EE] to-indigo-600 rounded-lg">
-                    <p id="seconds" className="text-base text-white">
-                      {seconds}
-                    </p>
-                    <p className="text-[10px] text-white">Seconds</p>
-                  </span>
-                </span>
-              </div>
-            )}
-            <input type="hidden" name="datetime" value={datetime} />
-            <input type="hidden" name="remark" value={remark} />
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <input
-                className="pl-2 outline-none border-none"
-                type="text"
-                name="FullName"
-                id=""
-                placeholder="Full Name"
-              />
-            </div>
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"
-                />
-              </svg>
-              <input
-                className="pl-2 outline-none border-none"
-                type="text"
-                name="Matric"
-                id=""
-                placeholder="Matric"
-              />
-            </div>
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                />
-              </svg>
-              <select
-                className="pl-2 outline-none border-none w-full"
-                type="text"
-                name="Section"
-                id=""
-                placeholder=""
-              >
-                <option value="Regular">Regular</option>
-                <option value="DirectEntry">Direct Entry</option>
-              </select>
-            </div>
-            <div className="mt-10 relative">
-              <p className="mb-2 block text-sm text-center font-medium text-gray-500">
-                Upload your Project Report
-              </p>
-              <input
-                type="file"
-                className="peer w-full text-sm file:bg-gradient-to-b file:from-indigo-600 file:to-indigo-500 file:px-2 file:py-0 file:m-3 file:border-none file:rounded-full file:text-white file:cursor-pointer file:shadow-lg file:shadow-indigo-600/50 bg-gradient-to-br from-gray-600 to-gray-700 text-white/80 rounded-full cursor-pointer shadow-xl shadow-gray-700/60"
-                name="ReportFile"
-                id=""
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
-              onClick={getDateTime}
-              disabled={submit ? false : true}
+
+            <form
+              name="report"
+              action="/thankyou"
+              encType="multipart/form-data"
+              method="POST"
+              data-netlify="true"
+              className=""
             >
-              Submit
-            </button>
-          </form>
+              <input type="hidden" name="form-name" value="report" />
+
+              {removeTimer ? null : (
+                <div className="w-full py-3 flex justify-center">
+                  <span className="flex gap-6">
+                    <span className="flex justify-center items-center flex-col w-10 h-10 bg-gradient-to-r from-[#4900EE] to-indigo-600 rounded-lg">
+                      <p id="days" className="text-base text-white">
+                        {days}
+                      </p>
+                      <p className="text-[10px] text-white">Days</p>
+                    </span>
+                    <span className="flex justify-center items-center flex-col w-10 h-10 bg-gradient-to-r from-[#4900EE] to-indigo-600 rounded-lg">
+                      <p id="hours" className="text-base text-white">
+                        {hours}
+                      </p>
+                      <p className="text-[10px] text-white">Hours</p>
+                    </span>
+                    <span className="flex justify-center items-center flex-col w-10 h-10 bg-gradient-to-r from-[#4900EE] to-indigo-600 rounded-lg">
+                      <p id="minutes" className="text-base text-white">
+                        {minutes}
+                      </p>
+                      <p className="text-[10px] text-white">Minutes</p>
+                    </span>
+                    <span className="flex justify-center items-center flex-col w-10 h-10 bg-gradient-to-r from-[#4900EE] to-indigo-600 rounded-lg">
+                      <p id="seconds" className="text-base text-white">
+                        {seconds}
+                      </p>
+                      <p className="text-[10px] text-white">Seconds</p>
+                    </span>
+                  </span>
+                </div>
+              )}
+              <input type="hidden" name="datetime" value={datetime} />
+              <input type="hidden" name="remark" value={remark} />
+              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-gray-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <input
+                  className="pl-2 outline-none border-none"
+                  type="text"
+                  name="FullName"
+                  id=""
+                  placeholder="Full Name"
+                />
+              </div>
+              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"
+                  />
+                </svg>
+                <input
+                  className="pl-2 outline-none border-none"
+                  type="text"
+                  name="Matric"
+                  id=""
+                  placeholder="Matric"
+                />
+              </div>
+              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                  />
+                </svg>
+                <select
+                  className="pl-2 outline-none border-none w-full"
+                  type="text"
+                  name="Section"
+                  id=""
+                  placeholder=""
+                >
+                  <option value="Regular">Regular</option>
+                  <option value="DirectEntry">Direct Entry</option>
+                </select>
+              </div>
+              <div className="mt-10 relative">
+                <p className="mb-2 block text-sm text-center font-medium text-gray-500">
+                  Upload your Project Report
+                </p>
+                <input
+                  type="file"
+                  className="peer w-full text-sm file:bg-gradient-to-b file:from-indigo-600 file:to-indigo-500 file:px-2 file:py-0 file:m-3 file:border-none file:rounded-full file:text-white file:cursor-pointer file:shadow-lg file:shadow-indigo-600/50 bg-gradient-to-br from-gray-600 to-gray-700 text-white/80 rounded-full cursor-pointer shadow-xl shadow-gray-700/60"
+                  name="ReportFile"
+                  id=""
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
+                onClick={getDateTime}
+                disabled={submit ? false : true}
+              >
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       </div>
       <div className="relative overflow-hidden h-90  w-full md:h-full bg-gradient-to-tr from-blue-800 to-purple-700 i ">
