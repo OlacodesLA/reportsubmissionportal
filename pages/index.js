@@ -291,15 +291,14 @@ const Home = () => {
             </ThankContext.Provider>
 
             <form
-              name="report"
+              name="fileForm"
               action="/thankyou"
               encType="multipart/form-data"
               method="POST"
-              data-netlify="true"
               className=""
+              data-netlify="true"
             >
-              <input type="hidden" name="form-name" value="report" />
-
+              <input type="hidden" name="form-name" value="fileForm" />
               {removeTimer ? null : (
                 <div className="w-full py-3 flex justify-center">
                   <span className="flex gap-6">
